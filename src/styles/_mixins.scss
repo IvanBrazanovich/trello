@@ -1,0 +1,25 @@
+@use "./variables.scss" as *;
+
+@mixin mediaChange($breakpoint) {
+  @media screen and (min-width: map-get($breakPoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin changeFont($font) {
+  @include mediaChange(sm) {
+    font-size: $font * 1.3;
+  }
+
+  @include mediaChange(md) {
+    font-size: $font * 1.6;
+  }
+
+  @include mediaChange(lg) {
+    font-size: $font * 1.8;
+  }
+
+  @include mediaChange(xl) {
+    font-size: $font * 2;
+  }
+}

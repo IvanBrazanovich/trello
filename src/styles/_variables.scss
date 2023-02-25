@@ -1,0 +1,28 @@
+// colores
+$primaryColor: #4f46e5;
+$primaryColorLight: #6366f1;
+$primaryColorStrong: #3730a3;
+$textColor: #374151;
+$textLightColor: #6b7280;
+$grayLighter: #f3f4f6;
+$grayLight: #cbd5e1;
+$grayBase: #808080;
+$redLight: #ef4444;
+$redBase: #dc2626;
+$redStrong: #b91c1c;
+$blueBase: #2563eb;
+$blueLight: #3b82f6;
+$blueStrong: #1d4ed8;
+
+// Border radius
+$rounded_lg: 0.5rem;
+$rounded_md: 0.3rem;
+$rounded_sm: 0.2rem;
+
+$breakPoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);

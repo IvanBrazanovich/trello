@@ -1,0 +1,17 @@
+@use "../index.scss" as *;
+.alert {
+  padding: 0.5rem 0;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.alert__red {
+  background-color: $redBase;
+}
+
+.alert__blue {
+  background-color: $blueBase;
+}

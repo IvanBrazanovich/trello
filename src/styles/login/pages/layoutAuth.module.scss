@@ -1,0 +1,61 @@
+@use "../../index.scss" as *;
+
+.layoutAuth {
+  background-color: $grayLighter;
+  min-height: 100vh;
+  padding: 1px;
+}
+
+.form__container {
+  margin: 4rem auto;
+  width: min(30rem, 100%);
+  text-align: center;
+
+  h1 {
+    text-transform: uppercase;
+    color: $primaryColor;
+    margin: 1rem 0;
+  }
+}
+
+.form {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: $rounded_md;
+
+  input {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $primaryColorLight;
+    margin: 2rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    &::placeholder {
+      color: $grayBase;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  button {
+    width: 100%;
+    background-color: $primaryColor;
+    color: white;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: $rounded_sm;
+    cursor: pointer;
+    transition: background-color 1s;
+
+    &:hover {
+      background-color: $primaryColorStrong;
+    }
+  }
+}

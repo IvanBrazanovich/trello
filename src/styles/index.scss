@@ -1,0 +1,54 @@
+@forward "variables.scss";
+@forward "mixins.scss";
+@use "mixins.scss" as *;
+@use "variables.scss" as *;
+
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color: $textColor;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.3rem;
+  @include changeFont(1.3rem);
+}
+
+h2 {
+  line-height: 1;
+  font-size: 1.2rem;
+  @include changeFont(1.2rem);
+}
+
+h3 {
+  font-size: 1.1rem;
+  line-height: 1.25;
+
+  @include changeFont(1.1rem);
+}
+
+h4 {
+  line-height: 1.25;
+
+  font-size: 1rem;
+  @include changeFont(1rem);
+}
