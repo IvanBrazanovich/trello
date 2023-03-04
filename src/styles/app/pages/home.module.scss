@@ -1,0 +1,19 @@
+@use "../../index.scss" as *;
+
+.home__tableros {
+  margin: 0 auto;
+  width: 50%;
+  width: 20rem;
+
+  button {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: red;
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2rem 0;
+    cursor: pointer;
+  }
+}

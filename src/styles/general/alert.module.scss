@@ -1,6 +1,7 @@
 @use "../index.scss" as *;
 .alert {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
+  text-align: center;
   color: white;
   border: none;
   font-size: 1rem;

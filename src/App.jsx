@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Board from "./pages/app/Board";
+import Home from "./pages/app/Home";
 import ChangePassword from "./pages/login/ChangePassword";
 import ForgotPassword from "./pages/login/ForgotPassword";
 import Login from "./pages/login/Login";
@@ -16,7 +18,10 @@ function App() {
             <Route path="change-password/:token" element={<ChangePassword />} />
             <Route path="confirm-account/:token" element={<Register />} />
           </Route>
-          <Route path="/app"></Route>
+          <Route path="/app">
+            <Route index element={<Home />} />
+            <Route path="board/:token" element={<Board />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
