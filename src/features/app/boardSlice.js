@@ -35,7 +35,41 @@ export const createNewBoard = createAsyncThunk(
     const idNumber = Math.floor(Math.random() * 1000) + Date.now();
     const newBoard = {
       name: nameBoard,
-      tareas: [],
+      lists: [
+        {
+          name: "NameofList1",
+          id: "jasd128y2HA3idf",
+          tareas: [
+            { name: "NameTarea", id: "jasd128y2HA3idf111" },
+            { name: "NameTarea2", id: "ja2HAsd128y3aidf222" },
+            { name: "NameTarea3", id: "ja1sd2HA128y3aidf333" },
+            { name: "NameTarea4", id: "jasd128y13aidf444" },
+            { name: "NameTarea5", id: "jas2HAd1228y3a2HA5idf555" },
+          ],
+        },
+        {
+          name: "NameofList2",
+          id: "jasda128y2HA3idf",
+          tareas: [
+            { name: "NameTarea6", id: "ja1281hayidf666" },
+            { name: "NameTarea7", id: "j1haasd1281hayaidf777" },
+            { name: "NameTarea8", id: "ja18y3aidf888" },
+            { name: "NameTarea9", id: "jas1had13a1haidf999" },
+            { name: "NameTarea10", id: "jas8y3a5idf1000" },
+          ],
+        },
+        {
+          name: "NameofList3",
+          id: "jasda1a28y2HA3idf",
+          tareas: [
+            { name: "NameTarea11", id: "jad1ha1yf" },
+            { name: "NameTarea12", id: "js1ha128y3aidf" },
+            { name: "NameTarea13", id: "ja1s1had1idf" },
+            { name: "NameTarea14", id: "jasd13aidf" },
+            { name: "NameTarea15", id: "ja1hasd122i1hadf" },
+          ],
+        },
+      ],
       id: idNumber.toString(),
     };
 
