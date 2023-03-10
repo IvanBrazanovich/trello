@@ -19,8 +19,6 @@ const SortableItemContainer = ({ dataTarea, id }) => {
       easing: "cubic-bezier(0.25, 1, 0.5, 1)",
     },
   });
-  console.log(transition);
-  console.log(transform);
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,

@@ -35,8 +35,8 @@ export const createNewBoard = createAsyncThunk(
     const idNumber = Math.floor(Math.random() * 1000) + Date.now();
     const newBoard = {
       name: nameBoard,
-      lists: [
-        {
+      lists: {
+        jasd128y2HA3idf: {
           name: "NameofList1",
           id: "jasd128y2HA3idf",
           tareas: [
@@ -47,7 +47,7 @@ export const createNewBoard = createAsyncThunk(
             { name: "NameTarea5", id: "jas2HAd1228y3a2HA5idf555" },
           ],
         },
-        {
+        jasda128y2HA3idf: {
           name: "NameofList2",
           id: "jasda128y2HA3idf",
           tareas: [
@@ -58,7 +58,7 @@ export const createNewBoard = createAsyncThunk(
             { name: "NameTarea10", id: "jas8y3a5idf1000" },
           ],
         },
-        {
+        jasda1a28y2HA3idf: {
           name: "NameofList3",
           id: "jasda1a28y2HA3idf",
           tareas: [
@@ -69,7 +69,7 @@ export const createNewBoard = createAsyncThunk(
             { name: "NameTarea15", id: "ja1hasd122i1hadf" },
           ],
         },
-      ],
+      },
       id: idNumber.toString(),
     };
 
