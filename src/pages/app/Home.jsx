@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import CreateBoard from "../../components/CreateBoard";
+import { Outlet } from "react-router";
+import CreateBoard from "../../components/app/CreateBoard";
+import SideBarHome from "../../components/app/SideBarHome";
+import WorkSpaces from "../../components/app/WorkSpaces";
 import Modal from "../../components/Modal";
 import styles from "../../styles/app/pages/home.module.scss";
 const Home = () => {
@@ -11,19 +14,20 @@ const Home = () => {
 
   return (
     <main className={styles.home}>
-      <div className={styles.home__tableros}>
-        <h1>Tableros</h1>
-
-        {/* Tableros acá */}
-
-        <button onClick={handleClickOpenModal}>Crear Tablero</button>
-
-        {modal && (
-          <Modal>
-            <CreateBoard />
-          </Modal>
-        )}
+      {/* <button onClick={handleClickOpenModal}>Crear Tablero</button>   */}
+      <div className={styles.home__sidebar}>
+        <SideBarHome />
       </div>
+
+      <div className={styles.home__rightSide}>
+        <Outlet />
+      </div>
+
+      {modal && (
+        <Modal>
+          <CreateBoard />
+        </Modal>
+      )}
     </main>
   );
 };

@@ -1,7 +1,35 @@
+@use "../../index.scss" as *;
+
+// .board {
+//   display: flex;
+//   & > div {
+//     padding: 1rem;
+//     border: 1px solid black;
+//   }
+// }
+
 .board {
   display: flex;
-  & > div {
-    padding: 1rem;
-    border: 1px solid black;
+}
+
+.sideBoard {
+  display: none;
+  flex-grow: 3;
+  max-width: 17rem;
+  min-width: 16rem;
+  @include mediaChange(md) {
+    display: block;
   }
+}
+
+.kanban {
+  flex-grow: 8;
+  background: linear-gradient(
+    180deg,
+    rgba(33, 139, 198, 0.9528186274509804) 35%,
+    rgba(127, 232, 252, 1) 100%
+  );
+  min-height: 100vh;
+  padding: 1rem;
+  overflow-x: auto;
 }

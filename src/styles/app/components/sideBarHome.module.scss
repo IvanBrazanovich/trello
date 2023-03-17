@@ -1,0 +1,84 @@
+@use "../../index.scss" as *;
+
+.sideBarHome {
+  padding: 0.3rem;
+  color: $textColor;
+  a {
+    text-decoration: none;
+
+    &:link {
+      color: inherit;
+    }
+    &:focus {
+      color: inherit;
+    }
+  }
+  path {
+    color: $grayBase;
+  }
+}
+
+.sideList {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.6rem;
+
+  gap: 1rem;
+  li {
+    font-size: 0.9rem;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 700;
+  }
+}
+
+.sideWorkSpaces {
+  margin: 1rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid $grayLight;
+
+  &__header {
+    font-size: 0.9rem;
+    padding-left: 0.6rem;
+
+    display: flex;
+    color: $grayBase;
+    align-items: center;
+    font-weight: 700;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+}
+
+.sideWorkSpaces__list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.accordion__list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  gap: 1rem;
+
+  li {
+    font-size: 0.8rem;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 700;
+    padding: 0.3rem;
+    border-radius: $rounded_md;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+  }
+}

@@ -1,19 +1,40 @@
 @use "../../index.scss" as *;
 
-.home__tableros {
-  margin: 0 auto;
-  width: 50%;
-  width: 20rem;
+.home {
+  max-width: 1100px;
+  margin: 3rem auto;
+  display: flex;
+  gap: 1rem;
 
-  button {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: red;
-    color: white;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 2rem 0;
-    cursor: pointer;
+  &__sidebar {
+    display: none;
+    flex-grow: 2;
+    max-width: 15rem;
+    @include mediaChange(sm) {
+      display: block;
+    }
+  }
+
+  &__rightSide {
+    margin: 0 1rem;
+    flex-grow: 8;
   }
 }
+
+// .home__tableros {
+//   margin: 0 auto;
+//   width: 50%;
+//   width: 20rem;
+
+//   button {
+//     width: 100%;
+//     padding: 0.5rem;
+//     background-color: red;
+//     color: white;
+//     border: none;
+//     font-size: 1.2rem;
+//     font-weight: 600;
+//     margin: 2rem 0;
+//     cursor: pointer;
+//   }
+// }

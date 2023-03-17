@@ -1,0 +1,40 @@
+@use "../../index.scss" as *;
+
+.accordion {
+  color: $textColor;
+
+  path {
+    color: $grayBase;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0.3rem;
+    cursor: pointer;
+    border-radius: $rounded_md;
+
+    div[type="title"] {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+
+    gap: 1rem;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+  }
+}
+
+.accordion__content {
+  margin: 1rem 0;
+}

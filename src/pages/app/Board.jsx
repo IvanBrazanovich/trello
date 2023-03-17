@@ -3,7 +3,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import Alert from "../../components/Alert";
 
-import KanbanBoard from "../../components/KanbanBoard";
+import KanbanBoard from "../../components/app/board/KanbanBoard";
+import KanbanHeader from "../../components/app/board/KanbanHeader";
+import SideBarBoard from "../../components/app/board/SideBarBoard";
+import { setAlertAsyncWithRedirect } from "../../features/app/boardSlice";
+import styles from "../../styles/app/pages/board.module.scss";
 
 const Board = () => {
   // State
@@ -11,20 +15,24 @@ const Board = () => {
 
   // React redux
   const dispatch = useDispatch();
+  const navigateFunction = useNavigate();
 
   // React redux
   const params = useParams();
 
   useEffect(() => {
     const boards = JSON.parse(localStorage.getItem("boards"));
-    const currentBoard = boards.filter((item) => item.id === params.token);
+    const boardId = params.token;
 
-    if (!currentBoard[0]) {
+    if (!boards[boardId]) {
       dispatch(
-        setAlertAsyncWithRedirect({ msg: "Something went wrong", error: true })
+        setAlertAsyncWithRedirect({
+          alert: { msg: "Something went wrong", error: true },
+          navigateFunction,
+        })
       );
     } else {
-      setBoard(currentBoard[0]);
+      setBoard(boards[boardId]);
     }
   }, []);
 
@@ -34,7 +42,16 @@ const Board = () => {
         <Alert />
       </div>
 
-      <KanbanBoard board={board} setBoard={setBoard} />
+      <main className={styles.board}>
+        <aside className={styles.sideBoard}>
+          <SideBarBoard board={board} />
+        </aside>
+
+        <div className={styles.kanban}>
+          <KanbanHeader name={board.name} />
+          <KanbanBoard board={board} setBoard={setBoard} />
+        </div>
+      </main>
     </>
   );
 };

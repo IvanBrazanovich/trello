@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { createNewBoard, setAlertAsync } from "../features/app/boardSlice";
-import styles from "../styles/app/components/createBoard.module.scss";
-import Alert from "./Alert";
+import { createBoard, setAlertAsync } from "../../features/app/boardSlice";
+import styles from "../../styles/app/components/createBoard.module.scss";
+import Alert from "../Alert";
 
-const CreateBoard = () => {
+const CreateBoard = ({ workSpaceId }) => {
   // State
   const [nameBoard, setNameBoard] = useState("");
 
@@ -27,7 +27,7 @@ const CreateBoard = () => {
       );
     }
 
-    dispatch(createNewBoard({ nameBoard, navigateFunction }));
+    dispatch(createBoard({ nameBoard, navigateFunction, workSpaceId }));
   };
 
   return (

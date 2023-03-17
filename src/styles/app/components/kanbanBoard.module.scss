@@ -1,0 +1,195 @@
+@use "../../index.scss" as *;
+
+.addFunction {
+  // width: min(30%, 20rem);
+}
+// .buttonAdd {
+//   border-radius: $rounded_md;
+//   padding: 1rem;
+//   width: min(30%, 20rem);
+//   margin: 1rem 0;
+//   button {
+//     background-color: rgb(75, 159, 216);
+//     padding: 0.5rem 1rem;
+//     border-radius: $rounded_md;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     gap: 1rem;
+//     border: none;
+//     color: #fff;
+//     cursor: pointer;
+//     &:hover {
+//       background-color: rgb(15, 75, 116);
+//     }
+//     path {
+//       color: #fff;
+//     }
+//   }
+//   input {
+//     width: 100%;
+//     padding: 0.4rem;
+//     border: none;
+//     border-bottom: 1px solid $grayBase;
+//   }
+
+//   &__active {
+//     background-color: aliceblue;
+//   }
+// }
+
+// .action__wrapper {
+//   display: flex;
+//   align-items: center;
+//   margin-top: 0.3rem;
+//   gap: 1rem;
+
+//   svg {
+//     cursor: pointer;
+//     color: $grayBase;
+//   }
+// }
+
+.buttonAdd {
+  transition: all linear 100ms;
+  max-height: 5rem;
+
+  &__active {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  &__active button {
+    display: none !important ;
+  }
+
+  button {
+    background-color: rgb(75, 159, 216);
+    padding: 0.5rem 1rem;
+    border-radius: $rounded_md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(52, 130, 182);
+    }
+  }
+}
+
+.action {
+  background-color: #dfe1e6;
+  max-height: 0;
+  visibility: hidden;
+  transition: all linear 200ms;
+
+  &__active {
+    max-height: 7rem;
+    padding: 0.5rem;
+    visibility: visible;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.6rem;
+    border: none;
+    border: 2px solid rgb(75, 159, 216);
+
+    outline: none;
+  }
+}
+
+.action__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+  }
+
+  button {
+    margin-top: 0.3rem;
+    background-color: rgb(75, 159, 216);
+    padding: 0.5rem 1rem;
+    border-radius: $rounded_md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(15, 75, 116);
+    }
+    path {
+      color: #fff;
+    }
+  }
+}
+
+.kanbanContainer {
+  min-height: 100vh;
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  overflow-x: auto;
+}
+
+.laneWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background-color: #dfe1e6;
+  padding: 0.7rem 1rem;
+  border-radius: $rounded_sm;
+  min-width: 17rem;
+
+  ul {
+    min-height: 1rem;
+  }
+  h3 {
+    font-size: 0.8rem;
+  }
+}
+
+.buttonTareaWrapper {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    margin-top: 0.3rem;
+    background-color: rgb(75, 159, 216);
+    padding: 0.5rem 1rem;
+    border-radius: $rounded_md;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(15, 75, 116);
+    }
+    path {
+      color: #fff;
+    }
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+  }
+}

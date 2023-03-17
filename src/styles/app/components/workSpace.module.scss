@@ -1,0 +1,77 @@
+@use "../../index.scss" as *;
+
+.workspace {
+  &__header {
+    & > svg {
+      color: $blueBase;
+    }
+
+    display: flex;
+    border-bottom: 1px solid $grayLight;
+    padding: 1rem 0;
+    gap: 1rem;
+
+    p path {
+      color: $grayBase;
+    }
+
+    p[type="name"] {
+      font-size: 1.5rem;
+    }
+    p[type="privada"] {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+  }
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+}
+
+.tableros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  row-gap: 2rem;
+  column-gap: 1rem;
+
+  @include mediaChange(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  a,
+  button {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.5rem;
+    min-height: 4rem;
+    border-radius: $rounded_md;
+    background-color: rgb(211, 230, 247);
+    &:hover {
+      background-color: rgba(20, 47, 94, 0.432);
+    }
+  }
+
+  button {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    path {
+      color: $textColor;
+    }
+  }
+}

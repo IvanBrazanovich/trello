@@ -2,12 +2,24 @@ import { DndContext, DragOverlay } from "@dnd-kit/core";
 import DroppableLane from "./DroppableLane";
 import Tarea from "./Tarea";
 import { arrayMove } from "@dnd-kit/sortable";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Plus, X } from "@phosphor-icons/react";
+
+import styles from "../../../styles/app/components/kanbanBoard.module.scss";
+import { useDispatch } from "react-redux";
+import { addListToBoard } from "../../../features/app/boardSlice";
 
 const KanbanBoard = ({ board, setBoard }) => {
   const [activeId, setActiveId] = useState(null);
-
+  const [activeAddList, setActiveAddList] = useState(false);
+  const [listName, setListName] = useState("");
+  const dispatch = useDispatch();
   const handleDragCancel = () => setActiveId(null);
+  const handleAddList = () => {
+    if (listName.trim().length > 0) {
+      dispatch(addListToBoard({ listName, boardId: board.id }));
+    }
+  };
 
   // Board logic
   const handleDragStart = ({ active }) => {
@@ -15,6 +27,8 @@ const KanbanBoard = ({ board, setBoard }) => {
   };
 
   const handleDragOver = ({ active, over }) => {
+    console.log(active);
+    console.log(over);
     const overId = over?.id;
 
     if (!overId) {
@@ -105,7 +119,46 @@ const KanbanBoard = ({ board, setBoard }) => {
     });
     return tarea[0];
   };
+  const AddComponentList = () => {
+    return (
+      <div className={styles.addFunction}>
+        <div
+          className={`${styles.buttonAdd} ${
+            activeAddList ? styles.buttonAdd__active : ""
+          }`}
+        >
+          <button onClick={(e) => setActiveAddList(!activeAddList)}>
+            Añada una Lista <Plus size={20} />
+          </button>
+        </div>
 
+        <div
+          className={` ${styles.action} ${
+            activeAddList ? styles.action__active : ""
+          }
+      }`}
+        >
+          <input
+            type="text"
+            placeholder="Introduzca Título de Lista"
+            value={listName}
+            onChange={(e) => setListName(e.target.value)}
+          />
+
+          <div className={styles.action__wrapper}>
+            <button onClick={handleAddList}>
+              <Plus size={16} />
+              Añada una Tarjeta
+            </button>
+
+            <div>
+              <X onClick={(e) => setActiveAddList(false)} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <DndContext
       onDragStart={handleDragStart}
@@ -113,24 +166,26 @@ const KanbanBoard = ({ board, setBoard }) => {
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div
-        className="container"
-        style={{ display: "flex", margin: "2rem", gap: "2rem" }}
-      >
+      <div className={styles.kanbanContainer}>
         {Object.keys(board).length > 0 &&
           Object.entries(board?.lists).map(([listId, listData]) => {
-            const { tareas, id } = listData;
+            const { tareas, name, id } = listData;
 
             return (
               <DroppableLane
+                key={id}
                 id={id}
                 tareas={tareas}
+                name={name}
+                boardId={board.id}
                 activeId={activeId}
-                key={id}
               />
             );
           })}
+
+        {AddComponentList()}
       </div>
+
       <DragOverlay>
         {activeId ? (
           <Tarea

@@ -7,7 +7,6 @@ const Alert = () => {
 
   const alertLogin = useSelector((state) => state.login.alert);
   const alertBoard = useSelector((state) => state.board.alert);
-
   useEffect(() => {
     if (alertLogin.msg) {
       setAlert(alertLogin);
