@@ -3,7 +3,7 @@ import styles from "../../styles/login/pages/layoutAuth.module.scss";
 import { useDispatch } from "react-redux";
 import { setAlertAsync } from "../../features/login/loginSlice";
 import { useSelector } from "react-redux";
-import Alert from "../../components/Alert";
+import AlertLogin from "../../components/AlertLogin";
 
 const Register = () => {
   // State
@@ -39,7 +39,7 @@ const Register = () => {
       <h1>Register</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        {alert.msg && <Alert />}
+        {alert.msg && <AlertLogin />}
         <input
           onChange={(e) => setName(e.target.value)}
           type="text"

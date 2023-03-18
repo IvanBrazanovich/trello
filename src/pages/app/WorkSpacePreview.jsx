@@ -40,8 +40,6 @@ const WorkSpacePreview = ({ data }) => {
   }, []);
 
   const handleClickBoard = (id) => {
-    console.log(id);
-
     navigate(`board/${id}`);
   };
 
@@ -84,7 +82,7 @@ const WorkSpacePreview = ({ data }) => {
       </div>
 
       {modal && (
-        <Modal>
+        <Modal setModal={setModal}>
           <CreateBoard workSpaceId={data.id} />
         </Modal>
       )}

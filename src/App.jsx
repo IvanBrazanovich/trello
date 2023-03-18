@@ -10,6 +10,8 @@ import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
 
 function App() {
+  //Functions to import
+
   return (
     <div className="App">
       <BrowserRouter>

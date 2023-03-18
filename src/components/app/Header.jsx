@@ -20,7 +20,6 @@ const Header = () => {
   const handleCrearWorkSpace = (e) => {
     e.preventDefault();
 
-    console.log("Clickeado");
     setModal(true);
   };
 
@@ -60,13 +59,13 @@ const Header = () => {
       </nav>
       <nav className={styles.header__list}>
         <li type="searchBar">
-          <MagnifyingGlass size={20} />
           <input type="text" />
+          <MagnifyingGlass size={20} />
         </li>
         <li type="smallscreen">
           <BellSimple />
         </li>
-        <li type="smallscreen">
+        <li type="smallscreen  ">
           <Question />
         </li>
         <li type="smallscreen">
@@ -75,7 +74,7 @@ const Header = () => {
       </nav>
 
       {modal && (
-        <Modal>
+        <Modal setModal={setModal}>
           <CreateWorkSpace setModal={setModal} />
         </Modal>
       )}

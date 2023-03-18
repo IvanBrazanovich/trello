@@ -14,7 +14,7 @@ const Accordion = ({ title, children }) => {
         <div type="title">
           <Aperture /> {title}
         </div>
-        <div>{isActive ? <CaretUp size={20} /> : <CaretDown size={20} />}</div>
+        <div>{isActive ? <CaretUp size={15} /> : <CaretDown size={15} />}</div>
       </div>
       {isActive && <div className={styles.accordion__content}>{children}</div>}
     </div>

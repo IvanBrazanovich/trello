@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import Alert from "../Alert";
 import styles from "../../styles/app/components/createWorkSpace.module.scss";
-import { createWorkSpace } from "../../features/app/boardSlice";
+import { createWorkSpace } from "../../features/app/boardFunctions/workSpacesFunctions";
+import AlertBoard from "../AlertBoard";
 
 const CreateWorkSpace = ({ setModal }) => {
   // State
   const [nameWorkSpace, setNameWorkSpace] = useState("");
-
-  // React Router
-  const navigateFunction = useNavigate();
 
   // Redux
   const dispatch = useDispatch();
@@ -28,12 +24,12 @@ const CreateWorkSpace = ({ setModal }) => {
       );
     }
 
-    dispatch(createWorkSpace({ nameWorkSpace, navigateFunction, setModal }));
+    dispatch(createWorkSpace({ nameWorkSpace, setModal }));
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.createWorkSpace}>
-      {alert.msg && <Alert />}
+      {alert.msg && <AlertBoard />}
       <div>
         <label htmlFor="nameWorkSpace">Name of WorkSpace</label>
         <input

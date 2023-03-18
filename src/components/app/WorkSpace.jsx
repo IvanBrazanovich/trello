@@ -1,80 +1,32 @@
-import {
-  Aperture,
-  Lock,
-  Pencil,
-  PencilCircle,
-  Plus,
-  User,
-} from "@phosphor-icons/react";
+import { Aperture, Lock, Pencil, Plus, User } from "@phosphor-icons/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import {
-  getWorkSpaces,
-  setAlertAsyncWithRedirect,
-} from "../../features/app/boardSlice";
+import { getWorkSpace } from "../../features/app/boardFunctions/workSpacesFunctions";
 import styles from "../../styles/app/components/workSpace.module.scss";
 import Modal from "../Modal";
 import CreateBoard from "./CreateBoard";
 
 const WorkSpace = () => {
-  const [workSpace, setWorkSpace] = useState({});
-  const { workSpaces } = useSelector((state) => state.board);
-  const dispatch = useDispatch();
-  const params = useParams();
-  const navigateFunction = useNavigate();
   // State
-  const [boardsData, setBoardsData] = useState({});
-
-  // Redux
-  const navigate = useNavigate();
-
   const [modal, setModal] = useState(false);
 
+  // React-Router
+  const params = useParams();
+
+  // Redux
+  const dispatch = useDispatch();
+  const { currentWorkSpace, workSpaces, currentBoardsOfWorkSpace } =
+    useSelector((state) => state.board);
   const handleClickOpenModal = (e) => {
     setModal(!modal);
   };
 
   useEffect(() => {
-    dispatch(getWorkSpaces());
-  }, []);
+    const workSpaceId = params.token;
 
-  useEffect(() => {
-    const getWorkSpace = () => {
-      const boards = JSON.parse(localStorage.getItem("boards"));
-
-      const workSpaceId = params.token;
-      const workSpaceFiltered = workSpaces.filter(
-        (item) => item.id === workSpaceId
-      );
-
-      console.log(workSpaceFiltered);
-
-      if (!workSpaceFiltered[0]) {
-        return dispatch(
-          setAlertAsyncWithRedirect({
-            alert: { msg: "Something went wrong", error: true },
-            navigateFunction,
-          })
-        );
-      }
-
-      let workSpaceBoards = {};
-
-      workSpaceFiltered[0]?.boards?.forEach((item) => {
-        if (boards[item]) {
-          const { name } = boards[item];
-          workSpaceBoards[item] = { name };
-        }
-      });
-      setBoardsData(workSpaceBoards);
-      console.log(workSpaceBoards);
-
-      setWorkSpace(workSpaceFiltered[0]);
-    };
-
-    getWorkSpace();
+    dispatch(getWorkSpace(workSpaceId));
   }, [workSpaces, params]);
 
   return (
@@ -83,7 +35,7 @@ const WorkSpace = () => {
         <Aperture size={50} weight="fill" />
         <div>
           <p type="name">
-            {workSpace.name} <Pencil size={15} weight="bold" />
+            {currentWorkSpace.name} <Pencil size={15} weight="bold" />
           </p>
           <p type="privada">
             <Lock size={15} weight="bold" />
@@ -99,8 +51,8 @@ const WorkSpace = () => {
 
         <div>
           <div className={styles.tableros}>
-            {Object.keys(boardsData).length > 0 &&
-              Object.entries(boardsData).map(([key, data]) => {
+            {Object.keys(currentBoardsOfWorkSpace).length > 0 &&
+              Object.entries(currentBoardsOfWorkSpace).map(([key, data]) => {
                 return (
                   <Link
                     to={`/app/board/${key}`}
@@ -113,15 +65,15 @@ const WorkSpace = () => {
               })}
 
             <button onClick={handleClickOpenModal}>
-              Crear Tablero Nuevo <Plus size={20} weight="regular" />
+              Crear Tablero Nuevo <Plus size={20} weight="bold" />
             </button>
           </div>
         </div>
       </div>
 
       {modal && (
-        <Modal>
-          <CreateBoard workSpaceId={workSpace.id} />
+        <Modal setModal={setModal}>
+          <CreateBoard workSpaceId={currentWorkSpace.id} />
         </Modal>
       )}
     </div>

@@ -7,10 +7,8 @@ import {
   Rocket,
   Rows,
   Star,
-  User,
   UserCircle,
   UserPlus,
-  Users,
   UsersFour,
 } from "@phosphor-icons/react";
 import React from "react";

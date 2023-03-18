@@ -11,16 +11,16 @@ import {
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getWorkSpaces } from "../../features/app/boardSlice";
+import { getWorkSpaces } from "../../features/app/boardFunctions/workSpacesFunctions";
 import styles from "../../styles/app/components/sideBarHome.module.scss";
 import Accordion from "./Accordion";
 
 const SideBarHome = () => {
   const dispatch = useDispatch();
   const { workSpaces } = useSelector((state) => state.board);
-
+  console.log(workSpaces);
   useEffect(() => {
-    dispatch(getWorkSpaces);
+    dispatch(getWorkSpaces());
   }, []);
 
   return (
@@ -44,12 +44,12 @@ const SideBarHome = () => {
       <div className={styles.sideWorkSpaces}>
         <p className={styles.sideWorkSpaces__header}>
           Espacios de Trabajo
-          <Plus size={20} />
+          <Plus size={15} />
         </p>
 
         <div className={styles.sideWorkSpaces__list}>
-          {workSpaces.length > 0 &&
-            workSpaces.map((item) => {
+          {Object.values(workSpaces).length > 0 &&
+            Object.values(workSpaces).map((item) => {
               return (
                 <Accordion title={item.name} key={item.id}>
                   <ul className={styles.accordion__list}>

@@ -1,54 +1,10 @@
 @use "../../index.scss" as *;
 
 .addFunction {
-  // width: min(30%, 20rem);
+  border-radius: $rounded_md;
+  overflow: hidden;
+  min-width: min(15rem, 100%);
 }
-// .buttonAdd {
-//   border-radius: $rounded_md;
-//   padding: 1rem;
-//   width: min(30%, 20rem);
-//   margin: 1rem 0;
-//   button {
-//     background-color: rgb(75, 159, 216);
-//     padding: 0.5rem 1rem;
-//     border-radius: $rounded_md;
-//     display: flex;
-//     align-items: center;
-//     justify-content: space-between;
-//     gap: 1rem;
-//     border: none;
-//     color: #fff;
-//     cursor: pointer;
-//     &:hover {
-//       background-color: rgb(15, 75, 116);
-//     }
-//     path {
-//       color: #fff;
-//     }
-//   }
-//   input {
-//     width: 100%;
-//     padding: 0.4rem;
-//     border: none;
-//     border-bottom: 1px solid $grayBase;
-//   }
-
-//   &__active {
-//     background-color: aliceblue;
-//   }
-// }
-
-// .action__wrapper {
-//   display: flex;
-//   align-items: center;
-//   margin-top: 0.3rem;
-//   gap: 1rem;
-
-//   svg {
-//     cursor: pointer;
-//     color: $grayBase;
-//   }
-// }
 
 .buttonAdd {
   transition: all linear 100ms;
@@ -64,19 +20,22 @@
   }
 
   button {
-    background-color: rgb(75, 159, 216);
     padding: 0.5rem 1rem;
+    background-color: rgba(243, 239, 239, 0.85);
+
+    width: 100%;
     border-radius: $rounded_md;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    font-weight: 600;
+    color: $grayLight;
     border: none;
-    color: #fff;
     cursor: pointer;
 
     &:hover {
-      background-color: rgb(52, 130, 182);
+      background-color: rgba(243, 239, 239, 0.95);
     }
   }
 }
@@ -192,4 +151,27 @@
 
     cursor: pointer;
   }
+}
+
+.tarea {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: $grayLight;
+  background-color: #fff;
+  border-radius: $rounded_md;
+  box-shadow: 1px 1px 2px 0 rgb(160, 155, 155);
+
+  &:hover {
+    background-color: rgba(240, 251, 253, 0.8);
+  }
+
+  &__active {
+    transform: rotate(5deg);
+  }
+}
+
+.droppable {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

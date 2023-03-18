@@ -11,13 +11,12 @@
   display: flex;
   gap: 1rem;
   li {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #fff;
     list-style: none;
     gap: 0.2rem;
     display: flex;
     align-items: center;
-    height: 2rem;
     display: none;
 
     @include mediaChange(lg) {

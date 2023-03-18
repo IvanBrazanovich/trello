@@ -2,20 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "../styles/general/alert.module.scss";
 
-const Alert = () => {
-  const [alert, setAlert] = useState({});
-
+const AlertLogin = () => {
   const alertLogin = useSelector((state) => state.login.alert);
-  const alertBoard = useSelector((state) => state.board.alert);
-  useEffect(() => {
-    if (alertLogin.msg) {
-      setAlert(alertLogin);
-    } else {
-      setAlert(alertBoard);
-    }
-  }, [alertBoard, alertLogin]);
 
-  if (!alert.msg) {
+  if (!alertLogin.msg) {
     return null;
   }
   return (
@@ -29,4 +19,4 @@ const Alert = () => {
   );
 };
 
-export default Alert;
+export default AlertLogin;

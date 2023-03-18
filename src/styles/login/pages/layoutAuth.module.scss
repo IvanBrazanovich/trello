@@ -13,7 +13,7 @@
 
   h1 {
     text-transform: uppercase;
-    color: $primaryColor;
+    color: $blueBase;
     margin: 1rem 0;
   }
 }
@@ -27,7 +27,7 @@
     display: block;
     width: 100%;
     border: none;
-    border-bottom: 1px solid $primaryColorLight;
+    border-bottom: 1px solid $blueBase;
     margin: 2rem 0;
     font-size: 1rem;
     line-height: 1.6;
@@ -43,7 +43,7 @@
 
   button {
     width: 100%;
-    background-color: $primaryColor;
+    background-color: $blueBase;
     color: white;
     padding: 0.5rem;
     font-size: 1.2rem;
@@ -55,7 +55,7 @@
     transition: background-color 1s;
 
     &:hover {
-      background-color: $primaryColorStrong;
+      background-color: $blueStrong;
     }
   }
 }

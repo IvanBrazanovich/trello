@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import { createBoard, setAlertAsync } from "../../features/app/boardSlice";
+import { createBoard } from "../../features/app/boardFunctions/boardFunctions";
+import { setAlertAsync } from "../../features/app/boardSlice";
+import useRedirect from "../../hooks/useRedirect";
 import styles from "../../styles/app/components/createBoard.module.scss";
-import Alert from "../Alert";
+import AlertBoard from "../AlertBoard";
 
 const CreateBoard = ({ workSpaceId }) => {
   // State
   const [nameBoard, setNameBoard] = useState("");
 
-  // React Router
-  const navigateFunction = useNavigate();
-
   // Redux
   const dispatch = useDispatch();
-  const { alert } = useSelector((state) => state.board);
+  const { alert, currentBoard } = useSelector((state) => state.board);
+
+  // custom hooks
+  useRedirect(`/app/board/${currentBoard.id}`, currentBoard);
+
   // Functions
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,12 +29,12 @@ const CreateBoard = ({ workSpaceId }) => {
       );
     }
 
-    dispatch(createBoard({ nameBoard, navigateFunction, workSpaceId }));
+    dispatch(createBoard({ nameBoard, workSpaceId }));
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.createBoardForm}>
-      {alert.msg && <Alert />}
+      {alert.msg && <AlertBoard />}
       <div>
         <label htmlFor="nameBoard">Name of Board</label>
         <input

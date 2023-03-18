@@ -1,16 +1,11 @@
 import React from "react";
 
+import styles from "../../../styles/app/components/kanbanBoard.module.scss";
+
 const Tarea = ({ activeId, dataTarea, id }) => {
   return (
-    <div
-      className="item"
-      style={{
-        border: "1px solid black",
-        padding: "1rem",
-        transform: activeId ? "rotate(5deg)" : " ",
-      }}
-    >
-      {dataTarea.name} --- {id}
+    <div className={`${styles.tarea} ${activeId ? styles.tarea__active : ""}`}>
+      {dataTarea.name}
     </div>
   );
 };
