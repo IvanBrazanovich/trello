@@ -47,7 +47,7 @@ const KanbanBoard = ({ board, setBoard }) => {
       </div>
 
       <DragOverlay>
-        {activeId ? (
+        {activeId && getTarea({ board, activeId }) ? (
           <Tarea
             activeId={activeId}
             dataTarea={getTarea({ board, activeId })}

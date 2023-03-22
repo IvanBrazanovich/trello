@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/login/pages/layoutAuth.module.scss";
 import { useDispatch } from "react-redux";
 import { setAlertAsync } from "../../features/login/loginSlice";
 import { useSelector } from "react-redux";
 import AlertLogin from "../../components/AlertLogin";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   // State
@@ -11,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const alert = useSelector((state) => state.login.alert);
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     // Form validation
@@ -21,6 +22,10 @@ const Login = () => {
       );
     }
   };
+
+  useEffect(() => {
+    navigate("/app");
+  }, []);
 
   return (
     <div className={styles.form__container}>

@@ -8,7 +8,7 @@ const handleDragStart = ({ board, setBoard, setActiveId, active }) => {
 const handleDragOver = ({ board, setBoard, setActiveId, active, over }) => {
   const overId = over?.id;
 
-  if (!overId) {
+  if (!overId || Object.keys(active.data.current).length === 0) {
     return;
   }
 
@@ -81,7 +81,7 @@ const handleDragEnd = ({ board, setBoard, setActiveId, active, over }) => {
     overIndex
   );
 
-  const boardCopy = { ...board };
+  const boardCopy = structuredClone(board);
 
   boardCopy.lists[activeParentListId].tareas = tareasSwapped;
 
@@ -96,7 +96,7 @@ const getTarea = ({ board, activeId: id }) => {
       tarea = tareaExist;
     }
   });
-  return tarea[0];
+  return tarea ? tarea[0] : null;
 };
 const handleDragCancel = () => setActiveId(null);
 

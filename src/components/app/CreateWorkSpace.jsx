@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../styles/app/components/createWorkSpace.module.scss";
-import { createWorkSpace } from "../../features/app/boardFunctions/workSpacesFunctions";
+import {
+  createWorkSpace,
+  getWorkSpaces,
+} from "../../features/app/boardFunctions/workSpacesFunctions";
 import AlertBoard from "../AlertBoard";
 
 const CreateWorkSpace = ({ setModal }) => {
@@ -25,6 +28,7 @@ const CreateWorkSpace = ({ setModal }) => {
     }
 
     dispatch(createWorkSpace({ nameWorkSpace, setModal }));
+    dispatch(getWorkSpaces());
   };
 
   return (
